@@ -40,7 +40,7 @@
 <main>
   <h1>String converter</h1>
   <StringInput on:stringChanged={handleStringChanged}/>
-  {#if string}
+  {#if string.trim()}
     <div class="converted-strings">
       <CaseConverter string="{string}" toCase="camel"/>
       <CaseConverter string="{string}" toCase="pascal"/>
