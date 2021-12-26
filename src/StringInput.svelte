@@ -13,7 +13,7 @@
   });
 </script>
 
-<input type="text" aria-label="String to convert" on:keyup={stringChanged} bind:this={input}>
+<input type="text" aria-label="String to convert" spellcheck="false" on:keyup={stringChanged} bind:this={input}>
 
 <style>
     input {
@@ -24,6 +24,7 @@
         outline: 0;
         font-size: 1.5em;
         color: inherit;
+        background-color: inherit;
     }
 
     input:hover, input:focus {
