@@ -1,6 +1,7 @@
 <script lang="ts">
   import StringInput from './StringInput.svelte';
   import CaseConverter from './CaseConverter.svelte';
+  import { onMount } from 'svelte';
 
   let string = '';
 
@@ -22,19 +23,27 @@
       theme = 'dark';
     }
   }
+
+  function toggleDarkModeKeyUp(event: KeyboardEvent) {
+    if (event.code == 'Enter' || event.code == 'NumpadEnter' || event.code == 'Space') {
+      toggleDarkMode();
+    }
+  }
+
+  onMount(function() {
+    document.body.style.transition = 'color 300ms, background-color 300ms';
+  });
 </script>
 
 <nav>
-  {#if theme === 'dark'}
-    <svg on:click={toggleDarkMode} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <svg on:click={toggleDarkMode} on:keyup={toggleDarkModeKeyUp} tabindex="0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+    {#if theme === 'dark'}
       <path fill="currentColor"
             d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/>
-    </svg>
-  {:else}
-    <svg on:click={toggleDarkMode} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+    {:else}
       <path fill="currentColor" d="M11.38 2.019a7.5 7.5 0 1 0 10.6 10.6C21.662 17.854 17.316 22 12.001 22 6.477 22 2 17.523 2 12c0-5.315 4.146-9.661 9.38-9.981z"/>
-    </svg>
-  {/if}
+    {/if}
+  </svg>
 </nav>
 
 <main>
@@ -59,7 +68,15 @@
     }
 
     nav svg {
+        padding: 0.25rem;
         cursor: pointer;
+        user-select: none;
+    }
+
+    nav svg:focus {
+        outline: 0;
+        border-radius: 0.25rem;
+        box-shadow: 0 0 0 0.2rem rgb(26 188 156 / 35%);
     }
 
     main {

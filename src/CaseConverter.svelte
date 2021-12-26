@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { toCamelCase, toPascalCase, toSnakeCase, toKebabCase } from './stringFunctions';
+  import { toCamelCase, toKebabCase, toPascalCase, toSnakeCase } from './stringFunctions';
 
   export let string: string;
   export let toCase: string;
@@ -38,8 +38,8 @@
     document.body.removeChild(el);
   }
 
-  function copyKeyUp(event: KeyboardEvent){
-    if (event.key == 'Enter'){
+  function copyKeyUp(event: KeyboardEvent) {
+    if (event.code == 'Enter' || event.code == 'NumpadEnter' || event.code == 'Space') {
       copyText();
     }
   }
