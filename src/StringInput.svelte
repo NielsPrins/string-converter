@@ -13,7 +13,7 @@
   });
 </script>
 
-<input type="text" on:keyup={stringChanged} bind:this={input}>
+<input type="text" aria-label="String to convert" on:keyup={stringChanged} bind:this={input}>
 
 <style>
     input {
