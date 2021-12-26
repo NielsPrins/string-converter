@@ -7,3 +7,5 @@ You can convert a string to:
 - Pascal case
 - Snake case
 - Kebab case
+
+![Demo](https://user-images.githubusercontent.com/28888849/147415433-f157aef9-5f99-438e-b8a1-2bb3d50e9a6a.gif)
