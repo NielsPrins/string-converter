@@ -6,7 +6,9 @@
 
   let convertedString: string;
   $: {
-    convertedString = convertString(string.trim());
+    if (string) {
+      convertedString = convertString(string.trim());
+    }
   }
 
   function capitalizeFirstLetter(string: string) {
@@ -14,6 +16,11 @@
   }
 
   function convertString(string: string) {
+    string = string.split('-').join(' ');
+    string = string.split('_').join(' ');
+    string = string.split('.').join(' ');
+    string = string.replace(/([A-Z])/g, ' $1');
+
     if (toCase === 'camel') {
       return toCamelCase(string);
     }
