@@ -19,7 +19,7 @@
     string = string.split('-').join(' ');
     string = string.split('_').join(' ');
     string = string.split('.').join(' ');
-    string = string.replace(/([A-Z])/g, ' $1');
+    string = string.replace(/([A-Z])/g, ' $1').trim();
 
     if (toCase === 'camel') {
       return toCamelCase(string);
